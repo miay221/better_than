@@ -23,3 +23,47 @@ body {
     display: inline-block;
     font-size: 12px;
 }
+
+.balloon {
+    position: absolute;
+    top: 215px; /* fallingContainer 상단에 위치 */
+    left: 42%;
+    transform: translateX(-50%);
+    background-color: #f0f0f0;
+    padding: 14px 22px;
+    border-radius: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+    color: #171717;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    z-index: 20;
+}
+
+
+.balloon.visible {
+    opacity: 1;
+}
+
+.user_balloon {
+    position: absolute;
+    top: 285px; /* fallingContainer 상단에 위치 */
+    right: 34%;
+    transform: translateX(-50%);
+    background-color: #3153ff;
+    padding: 14px 22px;
+    border-radius: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    z-index: 20;
+}
+
+
+.user_balloon.visible {
+    opacity: 1;
+}
+
