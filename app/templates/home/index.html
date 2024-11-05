@@ -1,11 +1,29 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME</title>
+    <title>Falling Circles Animation</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    메인 home 페이지
+    <header>
+        <h1>Website Header</h1>
+    </header>
+    <main>
+        <div class="falling-container">
+            <!-- 원 이미지를 반복해서 넣을 수 있습니다 -->
+            <div class="falling-circle">F</div>
+            <div class="falling-circle">R</div>
+            <div class="falling-circle">I</div>
+            <div class="falling-circle">D</div>
+            <div class="falling-circle">A</div>
+            <div class="falling-circle">Y</div>
+        </div>
+    </main>
+    <footer>
+        <p>Website Footer</p>
+    </footer>
+    <script src="{% static 'js/animation.js' %}"></script>
 </body>
 </html>
