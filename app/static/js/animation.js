@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Matter.js 모듈 가져오기
     const { Engine, Render, Runner, Bodies, Composite, World, Events } = Matter;
     const balloon = document.getElementById('balloon');
-    const user_balloon = document.getElementById('user_balloon');
+    const userBalloon = document.getElementById('userBalloon');
 
     // 물리 엔진 생성
     const engine = Engine.create();
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3000); // 페이지 로드 후 3초 후 표시하기
 
     setTimeout(() => {
-        user_balloon.classList.add('visible');
+        userBalloon.classList.add('visible');
     }, 5000); // 페이지 로드 후 3초 후 표시하기
 
     setInterval(() => {

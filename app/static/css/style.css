@@ -4,29 +4,19 @@ body {
     align-items: center;
 }
 
-
-.falling-circle {
+main {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    font-size: 24px;
-    color: white; /* 글자 색상 */
-    font-weight: bold;
+    justify-content: center;
+    position: relative;
+    width: 100%;
 }
 
-.textInput {
-    border: 1px solid #000000;
-    padding: 11px;
-    border-radius: 30px;
-    max-width: 60%;
-    word-wrap: break-word;
-    display: inline-block;
-    font-size: 12px;
-}
 
 .balloon {
     position: absolute;
-    top: 215px; /* fallingContainer 상단에 위치 */
+    top: 140px; /* fallingContainer 상단에 위치 */
     left: 42%;
     transform: translateX(-50%);
     background-color: #f0f0f0;
@@ -45,9 +35,9 @@ body {
     opacity: 1;
 }
 
-.user_balloon {
+.userBalloon {
     position: absolute;
-    top: 285px; /* fallingContainer 상단에 위치 */
+    top: 213px; /* fallingContainer 상단에 위치 */
     right: 34%;
     transform: translateX(-50%);
     background-color: #3153ff;
@@ -63,7 +53,20 @@ body {
 }
 
 
-.user_balloon.visible {
+.userBalloon.visible {
     opacity: 1;
 }
 
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin-top: 20px;
+}
+
+.text-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
