@@ -8,7 +8,7 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 
 0. 프로젝트 개요: [프로젝트 개요 URL](https://blog.naver.com/about_myself_/223632909091)
 1. 모델 학습: [모델 학습 URL](https://blog.naver.com/about_myself_/223647070278)
-2. 프론트엔드 개발: [프론트엔드 개발 URL](https://blog.naver.com/about_myself_/223648214394)
+2. 프론트엔드 개발: [프론트엔드 개발 URL](https://blog.naver.com/about_myself_/223651007855)
 
 ---
 
