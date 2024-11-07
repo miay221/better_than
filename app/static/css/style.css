@@ -61,12 +61,52 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50%;
+    width: 100%;
+    /* max-width: 600px; */
+    position: relative;
     margin-top: 20px;
+    /* padding-left: 14%; */
 }
 
 .text-button {
+    /* background: none;
+    border: none; */
+    cursor: pointer;
+    position: relative;
+    /* right: 10px; */
     background: none;
     border: none;
-    cursor: pointer;
+    padding-left: 16px;
+    display: flex;
+    align-items: center; 
+    padding-left: 16px;
 }
+
+/* Placeholder 스타일 */
+.textBox::placeholder {
+    color: #005622; /* 연두색 placeholder */
+    opacity: 1; /* 색상 확실하게 보이도록 설정 */
+    font-size: 12px;
+    font-family: system-ui;
+}
+
+/* 텍스트박스 자동 크기 조절 */
+.textBox {
+    resize: none; /* 사용자가 직접 크기 조절 못하도록 설정 */
+    overflow-y: hidden; /* 스크롤바 숨기기 */
+    height: 53px;
+    width: 100%;
+    min-width: 355px;
+    /* max-width: 700px; */
+    /* padding-left: 30px; */
+    /* padding-top: 10px; */
+    padding: 10px 40px 10px 20px; /* 오른쪽 여백 추가하여 버튼 위치 확보 */
+    border: 1px solid #fffdfd;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+    font-family: system-ui;
+    margin-left: 31%;
+}
+
+

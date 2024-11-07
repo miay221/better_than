@@ -3,6 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const { Engine, Render, Runner, Bodies, Composite, World, Events } = Matter;
     const balloon = document.getElementById('balloon');
     const userBalloon = document.getElementById('userBalloon');
+    const textBox = document.getElementById('textBox');
+
+    textBox.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+    });
+
 
     // 물리 엔진 생성
     const engine = Engine.create();

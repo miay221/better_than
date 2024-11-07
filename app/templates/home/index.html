@@ -9,21 +9,21 @@
 </head>
 <body>
     <header>
-        <h1>Website Header</h1>
+        <h1>This is header</h1>
     </header>
     <main>
         <div id="fallingContainer" class="falling-container"></div>
         <div id="balloon" class="balloon">Hello, How was your day?</div>
         <div id="userBalloon" class="userBalloon">. . .</div>
         <div class="input-container">
-            <input type="text" id="textBox" class="textBox">
+            <textarea id="textBox" class="textBox" placeholder="Write your message here"></textarea>
             <button type="button" class="text-button">
-                <img src="{% static 'images/arrow_top.png' %}" style="width: 5%;">
+                <img src="{% static 'images/arrow_top.png' %}" style="width: 7%; min-width: 28px;">
             </button>
         </div>
     </main>
     <footer>
-        <p>Website Footer</p>
+        <p>This is Footer</p>
     </footer>
     <script src="{% static 'js/animation.js' %}"></script>
 </body>
