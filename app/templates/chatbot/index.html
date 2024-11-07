@@ -3,12 +3,10 @@
 
 {% block title %}Mini-Talk{% endblock %}
 
+<!-- animation_elements 블록을 비워서 상속받지 않음 -->
+{% block animation_elements %}{% endblock %}
 
 {% block input_container %}
-
-
-<h3>여기는 챗봇으로 넘어와 텍스트를 분석하여 시각화하는 공간입니다.</h3>
+<h3>사용자 텍스트 분석 후 시각화 하는 페이지입니다.</h3>
     {{ block.super }}
-
-
 {% endblock %}
