@@ -84,29 +84,52 @@ main {
 
 /* Placeholder 스타일 */
 .textBox::placeholder {
-    color: #005622; /* 연두색 placeholder */
+    color: #00481da7; /* 연두색 placeholder */
     opacity: 1; /* 색상 확실하게 보이도록 설정 */
-    font-size: 12px;
+    font-size: 14px;
     font-family: system-ui;
 }
 
-/* 텍스트박스 자동 크기 조절 */
+/* 텍스트박스 스타일 */
 .textBox {
     resize: none; /* 사용자가 직접 크기 조절 못하도록 설정 */
-    overflow-y: hidden; /* 스크롤바 숨기기 */
+    overflow-y: auto; /* 스크롤바 보이기 (hidden 숨기기) */
     height: 53px;
     width: 100%;
+    max-height: 120px;
     min-width: 355px;
     /* max-width: 700px; */
     /* padding-left: 30px; */
     /* padding-top: 10px; */
-    padding: 10px 40px 10px 20px; /* 오른쪽 여백 추가하여 버튼 위치 확보 */
-    border: 1px solid #fffdfd;
-    border-radius: 10px;
+    padding: 13px 40px;
+    border: none; /* 사용자가 입력해도 border 생기지 않도록 설정 */
+    border-radius: 12px;
     background-color: #f5f5f5;
     box-sizing: border-box;
     font-family: system-ui;
     margin-left: 31%;
+    outline: none;
 }
 
 
+/* 스크롤바 스타일 */
+.textBox::-webkit-scrollbar {
+    width: 8px; /* 스크롤바 너비 */
+    max-height: 60%;
+}
+
+.textBox::-webkit-scrollbar-track {
+    background: #ececec; /* 트랙 배경색 */
+    border-radius: 12px;
+    margin:1em;
+}
+
+.textBox::-webkit-scrollbar-thumb {
+    background-color: rgba(226, 226, 226, 0.902); /* 스크롤바 색상 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    border: 2% solid #f5f5f5; /* 스크롤바와 트랙 사이 여백 */
+}
+
+.textBox::-webkit-scrollbar-thumb:hover {
+    background-color: #b0b0b0; /* 스크롤바에 마우스 올렸을 때 색상 */
+}

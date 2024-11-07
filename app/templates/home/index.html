@@ -3,9 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>miniME</title>
+    <title>{% block title %}Mini-Talk{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 </head>
 <body>
     <header>
@@ -15,16 +14,20 @@
         <div id="fallingContainer" class="falling-container"></div>
         <div id="balloon" class="balloon">Hello, How was your day?</div>
         <div id="userBalloon" class="userBalloon">. . .</div>
+        
+        <!-- Input form block for reuse in other templates -->
+        {% block input_container %}
         <div class="input-container">
-            <textarea id="textBox" class="textBox" placeholder="Write your message here"></textarea>
-            <button type="button" class="text-button">
+            <textarea id="textBox" class="textBox" placeholder="Write Message Here"></textarea>
+            <button type="button" class="text-button" onclick="location.href='/chatbot/'">
                 <img src="{% static 'images/arrow_top.png' %}" style="width: 7%; min-width: 28px;">
             </button>
         </div>
+        {% endblock %}
+        
     </main>
     <footer>
         <p>This is Footer</p>
     </footer>
-    <script src="{% static 'js/animation.js' %}"></script>
 </body>
 </html>
