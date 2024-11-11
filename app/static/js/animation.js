@@ -3,13 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const { Engine, Render, Runner, Bodies, Composite, World, Events } = Matter;
     const balloon = document.getElementById('balloon');
     const userBalloon = document.getElementById('userBalloon');
-    const textBox = document.getElementById('textBox');
 
+    // 텍스트박스 자동 높이 조절
     textBox.addEventListener('input', function() {
         this.style.height = 'auto';
-        this.style.height = (this.scrollHeight) + 'px';
+        this.style.height = `${this.scrollHeight}px`;
     });
-
 
     // 물리 엔진 생성
     const engine = Engine.create();
@@ -22,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         options: {
             width: 500,
             height: 570,
-            wireframes: false, // wireframes을 false로 설정하여 원이 채워진 상태로 보이도록 설정
+            wireframes: false, // 원이 채워진 상태로 보이도록 설정
             background: '#ffffff'
         }
     });
@@ -34,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 바닥 추가 (원들이 쌓이는 곳)
     const ground = Bodies.rectangle(240, 560, 480, 2, {
         isStatic: true, 
-        render: { visible:false }
+        render: { visible: false }
     });
     World.add(world, ground);
 
@@ -45,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
             friction: 3, // 마찰 설정
             frictionAir: 0.01,
             render: {
-                fillStyle: `hsl(${Math.floor(Math.random() * 360)}, 80%, 50%)`, // 색상 랜덤 설정
+                fillStyle: `hsl(${Math.floor(Math.random() * 360)}, 80%, 50%)` // 색상 랜덤 설정
             },
             label: label // 원의 글자 라벨 설정
         });
@@ -61,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
         userBalloon.classList.add('visible');
-    }, 5000); // 페이지 로드 후 3초 후 표시하기
+    }, 5000); // 페이지 로드 후 5초 후 표시하기
 
     setInterval(() => {
         const label = labels[currentIndex % labels.length]; // 라벨 순환
@@ -72,14 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(`Circle with label ${label} created at (${randomX}, 0)`);
 
         currentIndex++; // 다음 라벨로 이동
-
     }, 1300); // 1.3초 간격으로 원이 떨어지도록 설정
-    
 
-    // Matter.js 이벤트로 원들이 서로 부딪힐 때 반응하도록 설정 가능
+    // 충돌 이벤트 로깅
     Events.on(engine, 'collisionStart', (event) => {
         event.pairs.forEach(pair => {
-            // 충돌한 물체의 로직을 추가할 수 있음
             console.log(`Collision detected between ${pair.bodyA.label} and ${pair.bodyB.label}`);
         });
     });

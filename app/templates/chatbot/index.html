@@ -1,12 +1,30 @@
 {% extends 'home/index.html' %}
 {% load static %}
 
+{% block head %}
+<meta name="csrf-token" content="{{ csrf_token }}">
+{% endblock %}
+
 {% block title %}Mini-Talk{% endblock %}
 
-<!-- animation_elements 블록을 비워서 상속받지 않음 -->
 {% block animation_elements %}{% endblock %}
 
 {% block input_container %}
 <h3>사용자 텍스트 분석 후 시각화 하는 페이지입니다.</h3>
-    {{ block.super }}
+
+
+<div class="message-container">
+    <!-- 세션에서 가져온 사용자 메시지를 스타일링된 메시지 박스로 표시 -->
+    {% if request.session.user_message %}
+        <div class="user-message-bubble">
+            {{ request.session.user_message }}
+        </div>
+    {% else %}
+        <div class="placeholder-message">
+            오늘의 당신을 기록해보세요!
+        </div>
+    {% endif %}
+</div>
+
+{{ block.super }}
 {% endblock %}

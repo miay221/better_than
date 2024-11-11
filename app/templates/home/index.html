@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Mini-Me{% endblock %}</title>
+    {% block head %}
+    <meta name="csrf-token" content="{{ csrf_token }}"> <!-- CSRF 토큰 추가 -->
+    {% endblock %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
 </head>
 <body>
     <header>
@@ -15,37 +17,61 @@
     <main>
         {% block animation_elements %}
         <div id="fallingContainer" class="falling-container"></div>
-        <div id="balloon" class="balloon">Hello, How was your day?</div>
+        <div id="balloon" class="balloon">안녕하세요, 오늘 기분은 어떠신가요?</div>
         <div id="userBalloon" class="userBalloon">. . .</div>
         {% endblock %}
 
         {% block input_container %}
         <div class="input-container">
-            <textarea id="textBox" class="textBox" placeholder="Write Message Here"></textarea>
-            <button type="button" class="text-button" onclick="location.href='/chatbot/'">
+            <textarea id="textBox" class="textBox" placeholder="Message Here"></textarea>
+            <button type="button" class="text-button" id="sendButton">
                 <img src="{% static 'images/arrow_top.png' %}" style="width: 7%; min-width: 28px;">
             </button>
         </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // CSRF 토큰 가져오기
+                const csrfMetaTag = document.querySelector('meta[name="csrf-token"]');
+                const csrfToken = csrfMetaTag ? csrfMetaTag.getAttribute('content') : null;
+
+                if (!csrfToken) {
+                    console.error("CSRF token not found. Please ensure it is set in the HTML <head>.");
+                    return;
+                }
+
+                const sendButton = document.getElementById("sendButton");
+                const textBox = document.getElementById("textBox");
+
+                sendButton.addEventListener("click", () => {
+                    const message = textBox.value;
+
+                    fetch('/chatbot/save_message/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': csrfToken // CSRF 토큰 사용
+                        },
+                        body: JSON.stringify({ message: message })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            window.location.href = '/chatbot/'; // 성공 시 리디렉션
+                        } else {
+                            console.error('Failed to save message');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                });
+            });
+        </script>
         {% endblock %}
-        
     </main>
     
     <footer>
         <p>This is Footer</p>
     </footer>
-    <!-- Matter.js(JavaScript 물리 엔진 라이브러리) 를 먼저 로드해야 됨.
-     그렇지 않으면 animation.js 가 Matter.js 가 로드되기 전에 실행돼버려서 ReferenceError 가 발생함 
-     
-     
-    * Matter.js 란 *
-    오픈 소스 2D 물리 엔진 라이브러리
-    MIT 라이선스로 배포되어 자유롭게 사용할 수 있으며, 상업적 용도로도 제한 없이 이용할 수 있음
-
-    HTML5 게임 개발, 시뮬레이션, 인터랙티브 애니메이션 제작 등 다양한 용도로 사용되고 있고, JavaScript로 작성되어 있어 웹 기반 프로젝트에 쉽게 통합할 수 있다
-    기본적으로 충돌 감지, 중력, 마찰 등 다양한 물리 시뮬레이션 기능이 있음
-    -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
-    <!-- animation.js는 Matter.js 다음에 로드 -->
     <script src="{% static 'js/animation.js' %}"></script>
 </body>
 </html>

@@ -13,6 +13,43 @@ main {
     width: 100%;
 }
 
+.message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* 메시지가 오른쪽에 정렬되도록 설정 */
+    width: 90%;
+    max-width: 500px;
+    margin: 20px 0;
+}
+
+.user-message-bubble {
+    background-color: #3153ff; /* 메시지 배경색 */
+    color: white; /* 텍스트 색상 */
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    max-width: 80%;
+    text-align: left;
+    word-wrap: break-word; /* 긴 텍스트가 자동으로 줄 바꿈되도록 설정 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-self: flex-end; /* 메시지 버블이 오른쪽에 위치하도록 설정 */
+}
+
+.placeholder-message {
+    background-color: #f0f0f0; /* 플레이스홀더 배경색 */
+    color: #171717;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    max-width: 80%;
+    text-align: left;
+    word-wrap: break-word;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-self: flex-start; /* 플레이스홀더가 왼쪽에 위치하도록 설정 */
+    margin-bottom: 10px;
+}
+
 
 .balloon {
     position: absolute;
@@ -60,7 +97,8 @@ main {
 .input-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
+    justify-content: space-between;
     width: 100%;
     /* max-width: 600px; */
     position: relative;
