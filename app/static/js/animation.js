@@ -68,15 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const circle = createCircle(randomX, 0, 32, label); // 원 생성
         World.add(world, circle);
 
-        console.log(`Circle with label ${label} created at (${randomX}, 0)`);
-
         currentIndex++; // 다음 라벨로 이동
     }, 1300); // 1.3초 간격으로 원이 떨어지도록 설정
 
     // 충돌 이벤트 로깅
     Events.on(engine, 'collisionStart', (event) => {
         event.pairs.forEach(pair => {
-            console.log(`Collision detected between ${pair.bodyA.label} and ${pair.bodyB.label}`);
         });
     });
 });

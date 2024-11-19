@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background: black; /* 배경 설정 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 20px; /* 헤더와 카드 사이 간격 추가 */
+    padding-bottom: 20px; /* 헤더와 카드 사이 간격 추가 */
+
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.007); /* 헤더 투명 배경 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    width: 180px; 
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    background-color: #ffff; 
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    font-weight: bolder;
+}
+
+nav a:hover {
+    background-color: #0066ff;
+    color: #ffff;
+
+}
+
+.developer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 80px;
+    padding: 20px;
+}
+
+.developer-card {
+    position: relative;
+    display: flex;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    width: 600px;
+    height: 180px;
+    max-width: 450px;
+    align-items: center;
+    text-align: center;
+    overflow: hidden; /* 카드 내부 텍스트가 넘치지 않도록 처리 */
+    transition: box-shadow 0.3s ease;
+}
+
+.card-content {
+    position: absolute;
+    bottom: -100%; /* 카드 아래쪽에 숨김 */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(37, 37, 37, 0.3);
+    color: #ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: bottom 0.3s ease; /* 애니메이션 속성 */
+}
+
+.card-text {
+    padding: 20px;
+    color:black;
+    font-size: 18px;
+    opacity: 0; /* 처음에 투명하게 */
+}
+
+.developer-card:hover .card-content {
+    bottom: 0; /* 마우스를 올리면 텍스트 레이어가 올라옴 */
+}
+
+.developer-card:hover .card-text {
+    opacity: 1; /* 마우스를 올리면 텍스트가 보임 */
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 1.5; /* 기본 텍스트 높이의 1.5배로 설정 */
+}
+
+
+.developer-card:hover .developer-info-p {
+    color: #b1b1b169;
+}
+
+
+
+
+.developer-card img {
+    width: 150px;
+    height: 180px;
+    border-radius: 10px;
+    margin-right: 30px;
+}
+/* #dev5 img {
+    width: 190px;
+} */
+/* .image-and-name {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: left; 
+    margin-right: 20px; 
+} */
+
+.developer-card h3 {
+    color: #2b3a42;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.developer-card p {
+    font-size: 14px;
+    color: #2b3a42;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.developer-info {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    justify-content: center; /* 텍스트를 세로 중앙 정렬 */
+    align-items: center; /* 텍스트를 중앙 정렬로 설정 */
+    text-align: center; /* 텍스트를 중앙에 정렬 */
+}
+
+.developer-card:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 16px 22px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes cardFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#dev1 {
+    animation: cardFadeIn 1s forwards 0.5s;
+}
+
+#dev2 {
+    animation: cardFadeIn 1s forwards 1s;
+}
+
+#dev3 {
+    animation: cardFadeIn 1s forwards 1.5s;
+}
+
+#dev4 {
+    animation: cardFadeIn 1s forwards 2s;
+}
+
+#dev5 {
+    animation: cardFadeIn 1s forwards 2.5s;
+}
+
+#dev6 {
+    animation: cardFadeIn 1s forwards 3s;
+}
+
+/* 반응형 설정 */
+@media (max-width: 1024px) {
+    .developer-grid {
+        grid-template-columns: 1fr 1fr; /* 화면이 좁아질 때 2열로 배치 */
+    }
+
+    .logo img {
+        width: 120px; 
+    }
+
+    nav a {
+        font-size: 14px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .developer-grid {
+        grid-template-columns: 1fr; /* 모바일에서는 1열로 배치 */
+    }
+
+    .developer-card {
+        width: 100%;
+    }
+
+    .logo img {
+        width: 100px; 
+    }
+
+    nav {
+        display:inline-flex; 
+    }
+}
+
+@media (max-width: 480px) {
+    .developer-card img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .developer-card h3 {
+        font-size: 18px;
+    }
+
+    .developer-card p {
+        font-size: 12px;
+    }
+}
