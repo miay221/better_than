@@ -29,5 +29,10 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 
 ---
 
+### 로고 이미지
+- ![로고 이미지](https://github.com/miay221/better_than_now/logo_front_black.png)
+
+
+
 프로젝트는 README.md 파일을 통해 계속 업데이트될 예정입니다.<br> 
 개발 상황이나 참고 링크는 최신 정보로 반영 중입니다.
