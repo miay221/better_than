@@ -29,9 +29,10 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 
 ---
 
-### 로고 이미지
-- ![로고 이미지](https://github.com/miay221/better_than_now/logo_front_black.png)
-
+### 로고 레퍼런스
+- ![로고 이미지](https://kr.pinterest.com/pin/483714816230929422/)
+- ‘이상한 나라의 앨리스’에서 앨리스가 시계 토끼를 따라 원더랜드로 들어가듯, <br>
+   Alice Chat은 사용자들의 니즈를 따라가며 그들이 원하는 서비스를 구현하는 것을 목표로 합니다.
 
 
 프로젝트는 README.md 파일을 통해 계속 업데이트될 예정입니다.<br> 
