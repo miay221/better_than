@@ -32,7 +32,7 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 ### 로고 레퍼런스
 - ![로고 이미지](https://i.namu.wiki/i/hEYunNdeW8zyAo5ggxy9YWqNdLyZ9IHZTv6a702vQZqQcNePrq7er-1Ev4sQRUqtKBjweLFvXiYGWIbviwn3OjnrMBnqI9Aa4rXzj-ngflKWFbrnEtQ41WrO0OgaGAeKWOiepH75w9DHLdPtejhALQ.webp)
 - ‘이상한 나라의 앨리스’에서 앨리스가 시계 토끼를 따라 원더랜드로 들어가듯, <br>
-   Alice in wonderland는 사용자들의 니즈를 잘 파악하는 것을 목표로 합니다.
+   Alice in wonderland는 사용자들의 니즈를 따라가며 분석 고도화를 목표로 합니다.
 
 
 프로젝트는 README.md 파일을 통해 계속 업데이트될 예정입니다.<br> 
