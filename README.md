@@ -7,8 +7,8 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 ## 프로젝트 진행상황
 
 0. 프로젝트 개요: [프로젝트 개요 URL](https://blog.naver.com/about_myself_/223632909091)
-1. 모델 학습: [모델 학습 URL](https://blog.naver.com/about_myself_/223647070278)
-2-1. 프론트엔드 메인 심볼: [프론트엔드 개발 URL](https://blog.naver.com/about_myself_/223651007855)
+1. 모델 학습: [모델 학습 URL](https://blog.naver.com/about_myself_/223647070278) <br>
+2-1. 프론트엔드 메인 심볼: [프론트엔드 개발 URL](https://blog.naver.com/about_myself_/223651007855) 
 2-2. 프론트엔드 페이지 이동: [프론트엔드 개발 URL](https://blog.naver.com/about_myself_/223651007855)
 3. 자연어 분석 모델 추가 학습 ①: [kcBERT 모델 다운스트림 학습](https://blog.naver.com/about_myself_/223652741069)
 4. 자연어 분석 모델 추가 학습 ②: [형태소 사전을 활용한 실시간 전처리](https://blog.naver.com/about_myself_/223665091950)
