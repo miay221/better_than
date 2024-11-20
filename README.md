@@ -13,7 +13,7 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 4. 자연어 분석 모델 추가 학습 ①: [kcBERT 모델 다운스트림 학습 Click](https://blog.naver.com/about_myself_/223652741069)
 5. 자연어 분석 모델 추가 학습 ②: [형태소 사전을 활용한 실시간 전처리 Click](https://blog.naver.com/about_myself_/223665091950)
 6. 자연어 분석 모델 추가 학습 ③: [문제발생과 모델 재학습 Click](https://blog.naver.com/about_myself_/223666291812)
-7. 메인 페이지 제작: [로고와 영상 기획 및 제작](https://blog.naver.com/about_myself_/223667478320)
+7. 메인 페이지 제작: [로고와 영상 기획 및 제작 Click](https://blog.naver.com/about_myself_/223667478320)
 
 ---
 
