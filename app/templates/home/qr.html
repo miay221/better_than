@@ -1,22 +1,18 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developer Introduction</title>
-    <link rel="stylesheet" href="{% static 'css/qr.css' %}">
+    <title>scan me</title>
 </head>
-<body>
-    <header>
-        <div class="logo">
-            <a href="{% url 'index' %}"><img src="{% static 'images/logo_back.png' %}" alt="Logo"></a>
-        </div>
-        <nav>
-            <a href="{% url 'chatbot_index' %}">Try Chatbot Service</a>
-        </nav>
-    </header>
-
-    <script src="{% static 'images/qr.png' %}"></script>
+<body style="text-align: center; margin-top: 13%;">
+    <h3 style="font-family: system-ui;"><strong>
+        여기를 스캔하시면 Github 개발 페이지로 연결됩니다! 
+    </strong></h3>
+    <p><strong>
+        전체 과정과 소개를 확인하실 수 있습니다.
+    </strong></p>
+    <img src="{% static 'images/QR.png' %}" alt="QR code">
 </body>
 </html>
