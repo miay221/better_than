@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Alice in Wonderland{% endblock %}</title>
+    <title>{% block title %}Alice{% endblock %}</title>
     {% block head %}
     <meta name="csrf-token" content="{{ csrf_token }}"> <!-- CSRF 토큰 추가 -->
     {% endblock %}
@@ -13,13 +13,16 @@
     <header class="header"> 
         <div class="logo-container">
             <div class="logo">
-                <img class="logo-img front" src="{% static 'images/logo_back_black.png' %}" alt="Logo Back">
-                <img class="logo-img back" src="{% static 'images/logo_front_black.png' %}" alt="Logo Front">
-            </div>
+                <img class="logo-img front" src="{% static 'images/logo_back.png' %}" alt="Logo Back">
+                <img class="logo-img back" src="{% static 'images/logo_front.png' %}" alt="Logo Front">
+            </div>            
         </div>
         
         <nav class="navbar">
-            <a href="#top" class="nav-link">
+            <div class="qr-wrapper">
+                <a href="{% url 'home_qr' %}"><img src="{% static 'images/QR.png' %}" alt="QR Code" class="qr-icon" style="width: 50px;"></a>
+            </div>  
+            <!-- <a href="#top" class="nav-link">
                 <span class="file-tab">HOME</span>
             </a>
             <a href="#about-Alice" class="nav-link">
@@ -27,20 +30,41 @@
             </a>
             <a href="#contact" class="nav-link">
                 <span class="file-tab">CONTACT</span>
-            </a>            
+            </a>             -->
         </nav>
     </header>
 
-    <div class="qr-wrapper">
-        <a href="{% url 'home_qr' %}"><img src="{% static 'images/qr_test.png' %}" alt="QR Code" class="qr-icon" style="width: 3%;"></a>
-    </div>      
+  
 
+    <main>  
+        <!-- about section -->
+        <section id="home" style="background-color: black; width: 100vh;">
+            <div class="logo-movie-container">
+                <div class="logo-movie">
+                    <video class="logo-movie-white" autoplay muted loop>
+                        <source src="{% static 'images/logo_movie_white_4.mp4' %}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            
+        </section>
+        
+        <section id="about" style="background-color: black; width: 100%;">
+            <div class="about-content">
+                <h2 style="color: white; text-align: center;">ABOUT ALICEchat</h2>
+                <p style="color: white;"><strong>kcBERT기반으로 사용자 리뷰를 빠르게 파악하여 시각화합니다.</strong></p>
+                <p style="color: white;">ALICEchat이 실시간으로 분석해드립니다.</p>
+            </div>
+        </section>
+        
 
-    <main>
         {% block animation_elements %}
-        <div id="fallingContainer" class="falling-container"></div>
-        <div id="balloon" class="balloon">당신의 지금 마음은 어떤가요?</div>
-        <div id="userBalloon" class="userBalloon">. . .</div>
+        <div id="fallingContainer" class="falling-container">
+            <div id="balloon" class="balloon">당신의 지금 마음은 어떤가요?</div>
+            <div id="userBalloon" class="userBalloon">. . .</div>
+        </div>
+        
         {% endblock %}
 
         {% block input_container %}
@@ -116,16 +140,7 @@
         {% endblock %}
     </main>
 
-    <!-- About section -->
-    <section id="about-Alice" class="section">
-        <div class="about-video-container">
-            <!-- 소개영상 넣기 -->
-        </div>
-        <div class="about-content">
-            <h2>ABOUT ALICEchat</h2>
-            <p><strong>kcBERT기반으로 사용자 리뷰를 빠르게 파악하여 시각화합니다.</strong></p>
-            <p>ALICEchat이 실시간으로 분석해드립니다.</p>
-        </div>
+   
 
 <!-- Contact section -->
 <section id="contact" class="section footer-section">

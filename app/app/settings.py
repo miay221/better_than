@@ -120,6 +120,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
+    BASE_DIR / "images",  # images 디렉토리 추가
 ]
 
 # Default primary key field type
