@@ -21,15 +21,15 @@
             </a>  
             <nav class="navbar">
                 <ul class="nav-links">
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#try">TRY SERVICE</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
+                    <li><a href="{% if request.path == '/home/' %}#about{% else %}{% url 'home_index' %}#about{% endif %}" class="scroll-link">ABOUT</a></li>
+                    <li><a href="{% if request.path == '/home/' %}#try{% else %}{% url 'home_index' %}#try{% endif %}" class="scroll-link">TRY SERVICE</a></li>
+                    <li><a href="{% if request.path == '/home/' %}#contact{% else %}{% url 'home_index' %}#contact{% endif %}" class="scroll-link">CONTACT</a></li>
                 </ul>
             </nav>          
         </div>
         
         
-        <div class="qr-wrapper" style="margin-top: 110px;">
+        <div class="qr-wrapper" style="margin-top: 129px; margin-right: 30px;">
             <a href="{% url 'home_qr' %}"><img src="{% static 'images/QR.png' %}" alt="QR Code" class="qr-icon" style="width: 50px;"></a>
         </div>  
     </header>
@@ -62,22 +62,23 @@
         </section>
         {% endblock %}
         
+        <section id="try">
+            {% block animation_elements %}
+            <div id="fallingContainer" class="falling-container">
+                <div id="balloon" class="balloon">당신의 지금 마음은 어떤가요?</div>
+                <div id="userBalloon" class="userBalloon">. . .</div>
+            </div>
+            
+            {% endblock %}
 
-        {% block animation_elements %}
-        <div id="fallingContainer" class="falling-container">
-            <div id="balloon" class="balloon">당신의 지금 마음은 어떤가요?</div>
-            <div id="userBalloon" class="userBalloon">. . .</div>
-        </div>
-        
-        {% endblock %}
-
-        {% block input_container %}
-        <div class="input-container">
-            <textarea id="textBox" class="textBox" placeholder="Message Here"></textarea>
-            <button type="button" class="text-button" id="sendButton">
-                <img src="{% static 'images/arrow_top.png' %}" style="width: 7%; min-width: 28px;">
-            </button>
-        </div>
+            {% block input_container %}
+            <div class="input-container">
+                <textarea id="textBox" class="textBox" placeholder="Message Here"></textarea>
+                <button type="button" class="text-button" id="sendButton">
+                    <img src="{% static 'images/arrow_top.png' %}" style="width: 7%; min-width: 28px;">
+                </button>
+            </div>
+        </section>
 
         <script>
             document.addEventListener("DOMContentLoaded", () => {
@@ -140,6 +141,49 @@
                 });
             });
 
+            document.addEventListener("DOMContentLoaded", () => {
+                // 현재 페이지 URL에서 fragment ID(#about 등) 추출
+                const fragment = window.location.hash.substring(1);
+                if (fragment) {
+                    const targetElement = document.getElementById(fragment);
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 200; // 섹션 위치 조정
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: "smooth"
+                        });
+                    }
+                }
+
+                // 모든 링크 처리
+                const links = document.querySelectorAll(".scroll-link");
+                links.forEach(link => {
+                    link.addEventListener("click", (e) => {
+                        e.preventDefault(); // 기본 앵커 동작 방지
+
+                        const href = link.getAttribute("href");
+                        if (href.includes("#")) {
+                            const [baseUrl, fragment] = href.split("#");
+                            if (baseUrl === "" || baseUrl === window.location.pathname) {
+                                // 같은 페이지 내 스크롤
+                                const targetElement = document.getElementById(fragment);
+                                if (targetElement) {
+                                    const offsetTop = targetElement.offsetTop - 220;
+                                    window.scrollTo({
+                                        top: offsetTop,
+                                        behavior: "smooth"
+                                    });
+                                }
+                            } else {
+                                // 다른 페이지로 이동
+                                window.location.href = href;
+                            }
+                        }
+                    });
+                });
+            });
+
+
 
 
         </script>
@@ -147,18 +191,12 @@
     </main>
 </body>
    
-<footer>
+<footer style="height: 100vh; width: 100%; background-color: #e6e6e6;">
     <!-- Contact section -->
     <section id="contact" class="section footer-section">
-        <footer class="footer">
-            <div class="footer-content">
-
-            </div>
-        </footer>
+    
     </section>
-
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
-        <script src="{% static 'js/animation.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="{% static 'js/animation.js' %}"></script>
 </footer>
 </html>
