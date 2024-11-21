@@ -12,26 +12,25 @@
 <body id="top" style="margin: 0;">
     <header class="header"> 
         <div class="logo-container">
-            <div class="logo">
-                <img class="logo-img front" src="{% static 'images/logo_back.png' %}" alt="Logo Back">
-                <img class="logo-img back" src="{% static 'images/logo_front.png' %}" alt="Logo Front">
-            </div>            
+            <a href="#top">
+                <div class="logo">
+                    <img class="logo-img front" src="{% static 'images/logo_back.png' %}" alt="Logo Back">
+                    <img class="logo-img back" src="{% static 'images/logo_front.png' %}" alt="Logo Front">
+                </div>
+            </a>  
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#try">TRY SERVICE</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>          
         </div>
         
-        <nav class="navbar">
-            <div class="qr-wrapper">
-                <a href="{% url 'home_qr' %}"><img src="{% static 'images/QR.png' %}" alt="QR Code" class="qr-icon" style="width: 50px;"></a>
-            </div>  
-            <!-- <a href="#top" class="nav-link">
-                <span class="file-tab">HOME</span>
-            </a>
-            <a href="#about-Alice" class="nav-link">
-                <span class="file-tab">ABOUT</span>
-            </a>
-            <a href="#contact" class="nav-link">
-                <span class="file-tab">CONTACT</span>
-            </a>             -->
-        </nav>
+        
+        <div class="qr-wrapper" style="margin-top: 110px;">
+            <a href="{% url 'home_qr' %}"><img src="{% static 'images/QR.png' %}" alt="QR Code" class="qr-icon" style="width: 50px;"></a>
+        </div>  
     </header>
 
   
@@ -86,7 +85,6 @@
                     return;
                 }
                 
-
                 const sendButton = document.getElementById("sendButton");
                 const textBox = document.getElementById("textBox");
 
@@ -112,28 +110,31 @@
                 });
             });
             document.addEventListener("DOMContentLoaded", () => {
-        // 모든 .nav-link 요소를 선택
-                const navLinks = document.querySelectorAll(".nav-link");
+                const logoContainer = document.querySelector(".logo-container");
+                const navbar = document.querySelector(".navbar");
 
-                navLinks.forEach(link => {
-                    link.addEventListener("click", (event) => {
-                        // 기본 앵커 동작 막기
-                        event.preventDefault();
+                // 초기 상태 숨기기
+                navbar.style.opacity = "0";
+                navbar.style.transform = "translate(-50%, -50%) translateY(-20px)";
+                navbar.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+                // navbar.style.marginLeft = "150px";
 
-                        // 이동할 대상의 ID 추출
-                        const targetId = link.getAttribute("href");
-                        const targetElement = document.querySelector(targetId);
+                // 마우스를 올렸을 때 navbar 나타나기
+                logoContainer.addEventListener("mouseenter", () => {
+                    navbar.style.opacity = "1";
+                    navbar.style.transform = "translate(-50%, -50%) translateY(0)";
+                    // navbar.style.marginLeft = "150px";
+                });
 
-                        if (targetElement) {
-                            // 부드럽게 스크롤
-                            targetElement.scrollIntoView({
-                                behavior: "smooth",
-                                block: "start"
-                            });
-                        }
-                    });
+                // 마우스를 뗐을 때 navbar 숨기기
+                logoContainer.addEventListener("mouseleave", () => {
+                    navbar.style.opacity = "0";
+                    navbar.style.transform = "translate(-50%, -50%) translateY(-20px)";
+                    // navbar.style.marginLeft = "150px";
+
                 });
             });
+
 
 
         </script>

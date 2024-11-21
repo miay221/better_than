@@ -143,7 +143,7 @@ main {
 /* 텍스트박스 스타일 */
 .textBox {
     resize: none; /* 사용자가 직접 크기 조절 못하도록 설정 */
-    overflow-y: auto; /* 스크롤바 보이기 (hidden 숨기기) */
+    overflow-y: auto; /* 스크롤바 보이기 */
     height: 53px;
     width: 100%;
     max-height: 120px;
@@ -175,38 +175,40 @@ main {
 }
 
 .textBox::-webkit-scrollbar-thumb {
-    background-color: rgba(226, 226, 226, 0.902); /* 스크롤바 색상 */
-    border-radius: 5px; /* 모서리 둥글게 */
-    border: 2% solid #f5f5f5; /* 스크롤바와 트랙 사이 여백 */
+    background-color: rgba(226, 226, 226, 0.902); 
+    border-radius: 5px; 
+    border: 2% solid #f5f5f5; 
 }
 
 .textBox::-webkit-scrollbar-thumb:hover {
-    background-color: #b0b0b0; /* 스크롤바에 마우스 올렸을 때 색상 */
+    background-color: #b0b0b0; 
 }
 
 /* 로고 컨테이너 스타일 */
 .logo-container {
     margin-left: 5%;
+    margin-top: 2%;
     position: relative;
-    width: fit-content;
+    width: 100%;
+    height: 100%;
     display: inline-block;
-    perspective: 1000px; /* 3D 효과를 위한 perspective */
+    perspective: 1000px; 
 }
 
 /* 로고 스타일 */
 .logo {
-    position: relative;
-    width: 100px; /* 로고의 폭 (필요에 따라 조정) */
-    height: 91px; /* 로고의 높이 (필요에 따라 조정) */
+    position: absolute;
+    width: 100px; /* 로고 폭 */
+    height: 91px; /* 로고 높이 */
     margin-top: 10px;
-    transform-style: preserve-3d; /* 3D 애니메이션 활성화 */
-    transition: transform 0.6s; /* 부드러운 회전 애니메이션 */
+    transform-style: preserve-3d; 
+    transition: transform 0.6s; 
 }
 
 /* 기본 이미지 */
 .logo-img {
     position: absolute;
-    width: 100%; /* 로고 이미지가 컨테이너에 맞게 크기 조정 */
+    width: 100%; 
     height: 85%;
     backface-visibility: hidden; /* 뒤집힌 이미지 숨김 */
 }
@@ -259,7 +261,7 @@ main {
 /* 헤더 스타일 */
 .header {
     width: 100%;
-    height: 150px;
+    height: 190px;
     background-color: #e6e6e65e; /* 회색 배경 */
     position: relative;
     display: flex;
@@ -268,29 +270,6 @@ main {
     padding: 10px 20px; /* 헤더의 내부 여백 */
 }
 
-/* 네비게이션 바 스타일 */
-.navbar {
-    position: absolute; /* 헤더 안에서 절대 위치 */
-    bottom: 5px; /* 헤더 아래쪽 여백 */
-    right: 2%; /* 헤더 오른쪽 여백 */
-    display: flex; /* 가로로 나열 */
-    align-items: center; /* 세로 중앙 정렬 */
-}
-
-/* 네비게이션 링크 스타일 */
-.nav-link {
-    text-decoration: none; /* 링크 밑줄 제거 */
-    color: #000; /* 링크 텍스트 색상 */
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px; /* 링크 버튼처럼 보이도록 */
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.nav-link:hover {
-    background-color: #3153ff; /* 호버 시 배경색 */
-    color: white; /* 호버 시 텍스트 색상 */
-}
 
 /* 모든 video 태그에 적용 */
 video {
@@ -311,7 +290,6 @@ video {
     display: flow;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
 }
 
 .logo-movie {
@@ -320,3 +298,40 @@ video {
     align-items: center;
 }
 
+.navbar {
+    position: absolute; /* logo-container를 기준으로 배치 */
+    top: 50%; /* 세로 방향 중앙 정렬 */
+    left: 50%; /* 가로 방향 중앙 정렬 */
+    transform: translate(-50%, -50%); /* 완전히 중앙 정렬 */
+    width: 350px; /* 너비 설정 (HTML inline style 제거 가능) */
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 10px 20px;
+    margin: 0;
+    text-align: center;
+}
+
+.nav-links li {
+    margin: 5px 0;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    padding: 5px 10px;
+    display: block;
+    transition: background-color 0.3s ease;
+    font-weight:bold;
+}
+
+.nav-links a:hover {
+    color: #000000; /* 텍스트 색상 */
+    border-radius: 100px;
+    font-weight: bolder;
+    font-size: 20px;
+}
