@@ -7,6 +7,3 @@ def index(request):
 def qr(request):
     return render(request, 'home/qr.html')
 
-
-def about(request):
-    return render(request, 'home/about.html')

@@ -37,6 +37,8 @@
   
 
     <main> 
+        {% block qr-content %}
+        {% endblock %}
         {% block logo-movie %} 
         <!-- about section -->
         <section id="home" style="background-color: black; width: 120vh; margin-top: 15%;">
@@ -191,6 +193,7 @@
     </main>
 </body>
    
+{% block footer-section %}
 <footer style="height: 100vh; width: 100%; background-color: #e6e6e6;">
     <!-- Contact section -->
     <section id="contact" class="section footer-section">
@@ -199,4 +202,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
     <script src="{% static 'js/animation.js' %}"></script>
 </footer>
+{% endblock %}
 </html>
