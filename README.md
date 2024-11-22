@@ -1,3 +1,5 @@
+(https://github.com/miay221/better_than_now/blob/main/logo_front_black.png)
+
 ## 프로젝트 개요
 
 이 프로젝트는 KcBERT 모델을 추가 학습하여 한국어 감정 분석 서비스를 만드는 것을 목표로 합니다.<br>
