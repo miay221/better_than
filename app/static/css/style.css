@@ -332,9 +332,39 @@ video {
 }
 
 .nav-links a:hover {
-    color: #000000; /* 텍스트 색상 */
+    color: #711818; /* 텍스트 색상 */
     border-radius: 100px;
     font-weight: bolder;
     font-size: 20px;
 }
 
+.github-logo {
+    width: 8%;
+    margin-left: 3%;
+}
+
+.github-logo:hover {
+    transform: translateY(4px);
+    transition: 0.2s;
+
+}
+
+.naver-logo {
+    width: 8%;
+    margin-left: 3%;
+}
+
+.naver-logo:hover {
+    transform: translateY(4px);
+    transition: 0.2s;
+}
+
+.email-logo {
+    width: 6%;
+    margin-left: 3%;
+}
+
+.email-logo:hover {
+    transform: translateY(4px);
+    transition: 0.2s;
+}
