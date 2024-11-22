@@ -1,10 +1,10 @@
-(https://github.com/miay221/better_than_now/blob/main/logo_front_black.png)
-
 ## 프로젝트 개요
 
 이 프로젝트는 KcBERT 모델을 추가 학습하여 한국어 감정 분석 서비스를 만드는 것을 목표로 합니다.<br>
 Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 데이터베이스는 PostgreSQL을 사용하고, Django로 백엔드를 구축하여 전체 웹 서비스를 확장할 수 있도록 준비 중입니다.<br>
+
+![Project_logo](https://github.com/miay221/better_than_now/blob/main/logo_front_black.png)
 
 ## 프로젝트 진행상황
 
