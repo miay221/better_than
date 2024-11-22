@@ -105,11 +105,14 @@
         {% endblock %}
         
         <!-- try section -->
+         
         <section id="try" style="height: 95vh;">
+            {% block try-content %}
             <div class="try-content">
                 <h2 style="text-align: center; color: black; font-size: 40px; font-weight: bold; margin-top: 3%;">TRY ALICE</h2>
                 <p style="text-align: center; font-size: 14px;">빈칸에 글을 작성하고 엔터 또는 화살표를 누르면 이동합니다.</p>
             </div>
+            {% endblock %}
             {% block animation_elements %}
             <div id="fallingContainer" class="falling-container">
                 <div id="balloon" class="balloon">Hello, Alice. How was your day?</div>
@@ -140,9 +143,10 @@
                 
                 const sendButton = document.getElementById("sendButton");
                 const textBox = document.getElementById("textBox");
-
-                sendButton.addEventListener("click", () => {
-                    const message = textBox.value;
+                // 메시지 전송 함수
+                const sendMessage = () => {
+                    const message = textBox.value.trim(); // 입력 값 가져오기
+                    if (!message) return; // 빈 메시지 방지
 
                     fetch('/chatbot/save_message/', {
                         method: 'POST',
@@ -160,6 +164,23 @@
                         }
                     })
                     .catch(error => console.error('Error:', error));
+                };
+                
+                 // 화살표 버튼 클릭 이벤트
+                sendButton.addEventListener("click", sendMessage);
+
+                // textarea 이벤트 처리
+                textBox.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter") {
+                        if (event.shiftKey) {
+                            // Shift+Enter: 줄바꿈
+                            event.stopPropagation();
+                        } else {
+                            // Enter: 메시지 전송
+                            event.preventDefault(); // 기본 Enter 동작 방지
+                            sendMessage();
+                        }
+                    }
                 });
             });
             document.addEventListener("DOMContentLoaded", () => {
