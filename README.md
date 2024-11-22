@@ -4,6 +4,8 @@
 Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 데이터베이스는 PostgreSQL을 사용하고, Django로 백엔드를 구축하여 전체 웹 서비스를 확장할 수 있도록 준비 중입니다.<br>
 
+<img src="https://github.com/miay221/better_than_now/blob/main/logo_front_black.png" alt="Project Logo" width="100">
+
 ## 프로젝트 진행상황
 
 0. 프로젝트 개요: [프로젝트 개요 Click](https://blog.naver.com/about_myself_/223632909091)
@@ -14,6 +16,7 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 5. 자연어 분석 모델 추가 학습 ②: [형태소 사전을 활용한 실시간 전처리 Click](https://blog.naver.com/about_myself_/223665091950)
 6. 자연어 분석 모델 추가 학습 ③: [문제발생과 모델 재학습 Click](https://blog.naver.com/about_myself_/223666291812)
 7. 메인 페이지 제작: [로고와 영상 기획 및 제작 Click](https://blog.naver.com/about_myself_/223667478320)
+8. 페이지 섹션 제작: [전체 페이지 흐름 Click](https://blog.naver.com/about_myself_/223669763330)
 
 ---
 
