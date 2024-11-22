@@ -67,7 +67,7 @@
         <section id="try">
             {% block animation_elements %}
             <div id="fallingContainer" class="falling-container">
-                <div id="balloon" class="balloon">당신의 지금 마음은 어떤가요?</div>
+                <div id="balloon" class="balloon">당신의 지금 마음은 어떤지 적어주세요!</div>
                 <div id="userBalloon" class="userBalloon">. . .</div>
             </div>
             
@@ -144,17 +144,19 @@
             });
 
             document.addEventListener("DOMContentLoaded", () => {
-                // 현재 페이지 URL에서 fragment ID(#about 등) 추출
-                const fragment = window.location.hash.substring(1);
+                // 현재 페이지 URL에서 fragment ID(#about) 추출
+                const fragment = window.location.hash.substring(1); 
                 if (fragment) {
-                    const targetElement = document.getElementById(fragment);
-                    if (targetElement) {
-                        const offsetTop = targetElement.offsetTop - 200; // 섹션 위치 조정
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: "smooth"
-                        });
-                    }
+                    setTimeout(() => {
+                        const targetElement = document.getElementById(fragment);
+                        if (targetElement) {
+                            const offsetTop = targetElement.offsetTop - 220; // 섹션 위치 조정
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: "smooth"
+                            });
+                        }
+                    }, 100);  // 0.1 초 대기
                 }
 
                 // 모든 링크 처리
@@ -164,6 +166,7 @@
                         e.preventDefault(); // 기본 앵커 동작 방지
 
                         const href = link.getAttribute("href");
+                    
                         if (href.includes("#")) {
                             const [baseUrl, fragment] = href.split("#");
                             if (baseUrl === "" || baseUrl === window.location.pathname) {
@@ -179,6 +182,17 @@
                             } else {
                                 // 다른 페이지로 이동
                                 window.location.href = href;
+
+                                window.addEventListener("hashchange", () => {
+                                    const targetElement = document.getElementById(fragment);
+                                    if (targetElement) {
+                                        const offsetTop = targetElement.offsetTop - 220;
+                                        window.scrollTo({
+                                            top: offsetTop,
+                                            behavior: "smooth"
+                                        })
+                                    }
+                                })
                             }
                         }
                     });
