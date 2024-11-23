@@ -20,8 +20,13 @@ def analyze_message(request):
             result = async_to_sync(predict_emotion_async)(message)
             print('모델 분석 결과:', result)
 
+            values=result['probabilities']
+            max_val= max(values[0])
+            print('가장 높은 확률', max_val)
+
             # 결과를 세션에 저장 (동기 방식)
             request.session['analysis_result'] = result
+            request.session['max_val'] = max_val
 
             # 분석 결과, 응답 반환
             return JsonResponse({
@@ -38,8 +43,10 @@ def index(request):
     # 세션에서 메시지와 분석 결과 가져오기
     message = request.session.pop('user_message', None)
     result = request.session.pop('analysis_result', None)
+    max_val = request.session.pop('max_val', None)
 
     return render(request, 'chatbot/index.html', {
         'message': message,
-        'result': result
+        'result': result,
+        'max_val': max_val
     })
