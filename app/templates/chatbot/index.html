@@ -8,13 +8,12 @@
 {% block title %}ALICEchat{% endblock %}
 {% block try-content %}{% endblock %}
 {% block animation_elements %}{% endblock %}
-{% block footer-section %}{% endblock %}
 {% block logo-movie %}{% endblock %}
 {% block about-content %}{% endblock %}
 
 
 {% block input_container %}
-<div class="message-container" style="margin-top: 27vh; padding-top: 5%;">
+<div class="message-container" style="margin-top: 26vh;">
     {% if message %}
         <div class="user-message-bubble">
             {{ message }}
@@ -29,11 +28,23 @@
     <div class="spinner-icon"></div>
 </div>
 
-<div id="analysis-result" class="analysis-result">
+<div id="analysis-result" class="analysis-result" style="display: flex; flex-direction: column; align-items: center; margin-top: 5%;">
+    <div class="top-container" style="display:flex; align-items: center;">
+        <img src="{% static 'images/Alice_card.png' %}" class="alice_card_img" style="width: 24%; margin-right: 18px; margin-left: 26%;">
+        {% if result %}
+            <div class="clover-container" style="display: flex;">
+                {% for _ in range %}
+                    <img src="{% static 'images/clover.png' %}" class="clover-img" style="width: 27px; margin-left: 5px;">
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
     {% if result %}
-        <p>예측 클래스: <strong>{{ result.predicted_class }}</strong></p>
-        <p>확률: <strong>{{ max_val }}</strong></p>
-        <p>클래스별 예측: <strong>{{ result.probabilities }}</strong></p>
+        <div class="result-container" style="margin-top: 20px; text-align: center;">
+            <!-- <p>예측 클래스: <strong>{{ result.predicted_class }}</strong></p>
+            <p>확률: <strong>{{ max_val }}</strong></p> -->
+            <p>클래스별 예측: <strong>{{ result.probabilities }}</strong></p>
+        </div>
     {% endif %}
 </div>
 {% endblock %}
