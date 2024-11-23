@@ -107,6 +107,7 @@
         <!-- try section -->
          
         <section id="try" style="height: 105vh;">
+            
             {% block try-content %}
             <div class="try-content">
                 <h2 style="text-align: center; color: black; font-size: 40px; font-weight: bold; margin-top: 3%;">TRY ALICE</h2>
@@ -121,6 +122,16 @@
             
             {% endblock %}
 
+            {% block analysis-result %}
+            <div id="loading-spinner" style="display: none;">
+                <div class="spinner-icon"></div>
+            </div>
+            
+            <div id="analysis-result" class="analysis-result">
+                <!-- 챗봇 index.html에서 보여질 부분 -->
+            </div>
+            {% endblock %}
+
             {% block input_container %}
             <div class="input-container">
                 <textarea id="textBox" class="textBox" placeholder="Write your message"></textarea>
@@ -132,86 +143,85 @@
 
         <script>
             document.addEventListener("DOMContentLoaded", () => {
-                // CSRF 토큰 가져오기
-                const csrfMetaTag = document.querySelector('meta[name="csrf-token"]');
-                const csrfToken = csrfMetaTag ? csrfMetaTag.getAttribute('content') : null;
-
-                if (!csrfToken) {
-                    console.error("CSRF token not found. Please ensure it is set in the HTML <head>.");
-                    return;
-                }
-                
+                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                 const sendButton = document.getElementById("sendButton");
                 const textBox = document.getElementById("textBox");
-                // 메시지 전송 함수
-                const sendMessage = () => {
-                    const message = textBox.value.trim(); // 입력 값 가져오기
-                    if (!message) return; // 빈 메시지 방지
+                const spinner = document.getElementById("loading-spinner");
+                const resultDiv = document.getElementById("analysis-result");
 
-                    fetch('/chatbot/save_message/', {
+                const sendMessage = () => {
+                    const message = textBox.value.trim();
+                    if (!message) {
+                        alert("Please enter a message.");
+                        return;
+                    }
+
+                    spinner.style.display = "block"; // 로딩 애니메이션 표시
+
+                    fetch('/chatbot/analyze_message/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'X-CSRFToken': csrfToken // CSRF 토큰 사용
+                            'X-CSRFToken': csrfToken
                         },
-                        body: JSON.stringify({ message: message })
+                        body: JSON.stringify({ message })
                     })
-                    .then(response => {
-                        if (response.ok) {
-                            window.location.href = '/chatbot/'; // 성공 시 리디렉션
-                        } else {
-                            console.error('Failed to save message');
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
+                        .then(response => response.json())
+                        .then(data => {
+                            spinner.style.display = "none"; // 로딩 애니메이션 숨기기
+                            if (data.status === 'success') {
+                                const { result } = data;
+                                // 분석 결과를 화면에 표시
+                                resultDiv.innerHTML = `
+                                    <p>Predicted Class: <strong>${result.predicted_class}</strong></p>
+                                    <p>Probabilities: <strong>${JSON.stringify(result.probabilities)}</strong></p>
+                                `;
+                            } else {
+                                alert(data.message);
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                            spinner.style.display = "none";
+                        });
                 };
-                
-                 // 화살표 버튼 클릭 이벤트
-                sendButton.addEventListener("click", sendMessage);
 
-                // textarea 이벤트 처리
-                textBox.addEventListener("keydown", (event) => {
-                    if (event.key === "Enter") {
-                        if (event.shiftKey) {
-                            // Shift+Enter: 줄바꿈
-                            event.stopPropagation();
-                        } else {
-                            // Enter: 메시지 전송
-                            event.preventDefault(); // 기본 Enter 동작 방지
-                            sendMessage();
-                        }
+                sendButton.addEventListener('click', sendMessage);
+                textBox.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' && !event.shiftKey) {
+                        event.preventDefault();
+                        sendMessage();
                     }
                 });
             });
+
+        
+            // 네비게이션 바 애니메이션
             document.addEventListener("DOMContentLoaded", () => {
                 const logoContainer = document.querySelector(".logo-container");
                 const navbar = document.querySelector(".navbar");
-
+        
                 // 초기 상태 숨기기
                 navbar.style.opacity = "0";
                 navbar.style.transform = "translate(-50%, -50%) translateY(-20px)";
                 navbar.style.transition = "opacity 0.3s ease, transform 0.3s ease";
-                // navbar.style.marginLeft = "150px";
-
+        
                 // 마우스를 올렸을 때 navbar 나타나기
                 logoContainer.addEventListener("mouseenter", () => {
                     navbar.style.opacity = "1";
                     navbar.style.transform = "translate(-50%, -50%) translateY(0)";
-                    // navbar.style.marginLeft = "150px";
                 });
-
+        
                 // 마우스를 뗐을 때 navbar 숨기기
                 logoContainer.addEventListener("mouseleave", () => {
                     navbar.style.opacity = "0";
                     navbar.style.transform = "translate(-50%, -50%) translateY(-20px)";
-                    // navbar.style.marginLeft = "150px";
-
                 });
             });
-
+        
+            // 페이지 스크롤 처리
             document.addEventListener("DOMContentLoaded", () => {
-                // 현재 페이지 URL에서 fragment ID(#about) 추출
-                const fragment = window.location.hash.substring(1); 
+                const fragment = window.location.hash.substring(1);
                 if (fragment) {
                     setTimeout(() => {
                         const targetElement = document.getElementById(fragment);
@@ -222,17 +232,16 @@
                                 behavior: "smooth"
                             });
                         }
-                    }, 100);  // 0.1 초 대기
+                    }, 100); // 0.1 초 대기
                 }
-
-                // 모든 링크 처리
+        
+                // 링크 클릭 처리
                 const links = document.querySelectorAll(".scroll-link");
-                links.forEach(link => {
+                links.forEach((link) => {
                     link.addEventListener("click", (e) => {
                         e.preventDefault(); // 기본 앵커 동작 방지
-
+        
                         const href = link.getAttribute("href");
-                    
                         if (href.includes("#")) {
                             const [baseUrl, fragment] = href.split("#");
                             if (baseUrl === "" || baseUrl === window.location.pathname) {
@@ -248,7 +257,7 @@
                             } else {
                                 // 다른 페이지로 이동
                                 window.location.href = href;
-
+        
                                 window.addEventListener("hashchange", () => {
                                     const targetElement = document.getElementById(fragment);
                                     if (targetElement) {
@@ -256,19 +265,16 @@
                                         window.scrollTo({
                                             top: offsetTop,
                                             behavior: "smooth"
-                                        })
+                                        });
                                     }
-                                })
+                                });
                             }
                         }
                     });
                 });
             });
-
-
-
-
         </script>
+        
         {% endblock %}
     </main>
 </body>

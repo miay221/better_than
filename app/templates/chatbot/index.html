@@ -7,26 +7,74 @@
 
 {% block title %}Mini-Talk{% endblock %}
 
-{% block animation_elements %}{% endblock %}
-{% block logo-movie %}{% endblock %}
-{% block about-content %}{% endblock %}
-{% block try-content %}{% endblock %}
-
 {% block input_container %}
-
-
 <div class="message-container" style="margin-top: 50vh;">
-    <!-- 세션에서 가져온 사용자 메시지를 스타일링된 메시지 박스로 표시 -->
-    {% if request.session.user_message %}
+    {% if message %}
         <div class="user-message-bubble">
-            {{ request.session.user_message }}
-        </div>
-    {% else %}
-        <div class="placeholder-message">
-            오늘의 당신을 기록해보세요!
+            {{ message }}
         </div>
     {% endif %}
 </div>
 
-{{ block.super }}
+<div id="loading-spinner" class="spinner" style="display: none;">
+    <div class="spinner-icon"></div>
+</div>
+
+<div id="analysis-result" class="analysis-result">
+    {% if result %}
+        <p>예측 클래스: <strong>{{ result.predicted_class }}</strong></p>
+        <p>확률: <strong>{{ result.probabilities }}</strong></p>
+    {% endif %}
+</div>
+
+<div>
+    <textarea id="textBox" placeholder="Enter your message here"></textarea>
+    <button id="sendButton">Analyze</button>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        const sendButton = document.getElementById("sendButton");
+        const textBox = document.getElementById("textBox");
+        const spinner = document.getElementById("loading-spinner");
+        const resultDiv = document.getElementById("analysis-result");
+
+        const sendMessage = () => {
+            const message = textBox.value.trim();
+            if (!message) {
+                alert("Please enter a message.");
+                return;
+            }
+
+            spinner.style.display = "block"; // 로딩 애니메이션 표시
+
+            fetch('/chatbot/analyze_message/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify({ message })
+            })
+                .then(response => {
+                    if (response.redirected) {
+                        window.location.href = response.url; // 리다이렉션 처리
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    spinner.style.display = "none";
+                });
+        };
+
+        sendButton.addEventListener('click', sendMessage);
+        textBox.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+    });
+</script>
 {% endblock %}

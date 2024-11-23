@@ -1,0 +1,392 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* 메시지가 오른쪽에 정렬되도록 설정 */
+    width: 90%;
+    max-width: 500px;
+    margin: 20px 0;
+}
+
+.user-message-bubble {
+    background-color: #3153ff; /* 메시지 배경색 */
+    color: white; /* 텍스트 색상 */
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    max-width: 80%;
+    text-align: left;
+    word-wrap: break-word; /* 긴 텍스트가 자동으로 줄 바꿈되도록 설정 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-self: flex-end; /* 메시지 버블이 오른쪽에 위치하도록 설정 */
+}
+
+.placeholder-message {
+    background-color: #f0f0f0; /* 플레이스홀더 배경색 */
+    color: #171717;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    max-width: 80%;
+    text-align: left;
+    word-wrap: break-word;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-self: flex-start; /* 플레이스홀더가 왼쪽에 위치하도록 설정 */
+    margin-bottom: 10px;
+}
+
+/* Matter.js 컨테이너의 크기 조정 */
+#fallingContainer {
+    position: relative;
+    width: 500px; /* Matter.js에서 설정한 렌더러 너비와 동일하게 설정 */
+    height: 570px; /* Matter.js에서 설정한 렌더러 높이와 동일하게 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    overflow: hidden; /* 컨테이너 밖의 요소 숨김 */
+}
+
+.balloon {
+    position: absolute;
+    top: 140px;
+    left: 50%; /* 화면 중앙 정렬 */
+    transform: translateX(-50%);
+    background-color: #f0f0f0;
+    padding: 14px 22px;
+    border-radius: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+    color: #171717;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out, top 0.6s ease-in-out;
+    z-index: 10; /* Matter.js 렌더링 위에 표시 */
+    margin-left: -20%;
+}
+
+
+.balloon.visible {
+    opacity: 1;
+    top: 120px; /* 애니메이션으로 약간 올라가는 효과 */
+}
+
+.userBalloon {
+    position: absolute;
+    top: 213px;
+    right: 50%;
+    transform: translateX(50%);
+    background-color: #3153ff;
+    padding: 14px 22px;
+    border-radius: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out, top 0.6s ease-in-out;
+    z-index: 10; /* Matter.js 렌더링 위에 표시 */
+    margin-right: -43%;
+}
+
+
+.userBalloon.visible {
+    opacity: 1;
+    top: 193px; /* 애니메이션으로 약간 올라가는 효과 */
+}
+
+.input-container {
+    margin-top: 10%;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    justify-content: space-between;
+    width: 100%;
+    /* max-width: 600px; */
+    position: relative;
+    margin-top: 20px;
+    /* padding-left: 14%; */
+}
+
+.text-button {
+    /* background: none;
+    border: none; */
+    cursor: pointer;
+    position: relative;
+    /* right: 10px; */
+    background: none;
+    border: none;
+    padding-left: 16px;
+    display: flex;
+    align-items: center; 
+    padding-left: 16px;
+}
+
+/* Placeholder 스타일 */
+.textBox::placeholder {
+    color: #00481da7; /* 연두색 placeholder */
+    opacity: 1; /* 색상 확실하게 보이도록 설정 */
+    font-size: 14px;
+    font-family: system-ui;
+}
+
+/* 텍스트박스 스타일 */
+.textBox {
+    resize: none; /* 사용자가 직접 크기 조절 못하도록 설정 */
+    overflow-y: auto; /* 스크롤바 보이기 */
+    height: 53px;
+    width: 100%;
+    max-height: 120px;
+    min-width: 355px;
+    /* max-width: 700px; */
+    /* padding-left: 30px; */
+    /* padding-top: 10px; */
+    padding: 13px 40px;
+    border: none; /* 사용자가 입력해도 border 생기지 않도록 설정 */
+    border-radius: 12px;
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+    font-family: system-ui;
+    margin-left: 31%;
+    outline: none;
+}
+
+
+/* 스크롤바 스타일 */
+.textBox::-webkit-scrollbar {
+    width: 8px; /* 스크롤바 너비 */
+    max-height: 60%;
+}
+
+.textBox::-webkit-scrollbar-track {
+    background: #ececec; /* 트랙 배경색 */
+    border-radius: 12px;
+    margin:1em;
+}
+
+.textBox::-webkit-scrollbar-thumb {
+    background-color: rgba(226, 226, 226, 0.902); 
+    border-radius: 5px; 
+    border: 2% solid #f5f5f5; 
+}
+
+.textBox::-webkit-scrollbar-thumb:hover {
+    background-color: #b0b0b0; 
+}
+
+/* 로고 컨테이너 스타일 */
+.logo-container {
+    margin-left: 5%;
+    margin-top: 2%;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    perspective: 1000px; 
+}
+
+/* 로고 스타일 */
+.logo {
+    position: absolute;
+    width: 100px; /* 로고 폭 */
+    height: 91px; /* 로고 높이 */
+    margin-top: 10px;
+    transform-style: preserve-3d; 
+    transition: transform 0.6s; 
+}
+
+/* 기본 이미지 */
+.logo-img {
+    position: absolute;
+    width: 100%; 
+    height: 85%;
+    backface-visibility: hidden; /* 뒤집힌 이미지 숨김 */
+}
+
+/* 앞면 이미지 */
+.logo-img.front {
+    transform: rotateY(0deg); /* 기본 상태에서 앞면 보임 */
+}
+
+/* 뒷면 이미지 */
+.logo-img.back {
+    transform: rotateY(180deg); /* 기본 상태에서 숨겨짐 */
+    margin-left: -2px;
+}
+
+/* hover 시 이미지 뒤집기 효과 */
+.logo:hover {
+    transform: rotateY(180deg); /* 로고 컨테이너가 회전 */
+}
+
+/* File-tab 스타일 */
+.file-tab {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #ffffff; /* 배경색 */
+    color: #000000; /* 텍스트 색상 */
+    border: 2px solid #d3d3d3; /* 테두리 색상 */
+    border-radius: 10px; /* 테두리를 둥글게 */
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 살짝 그림자 추가 */
+    transition: all 0.3s ease; /* 부드러운 애니메이션 */
+    margin-right: 10px; /* 메뉴 간 간격 */
+}
+
+.file-tab:hover {
+    background-color: #000000; /* hover 시 배경색 */
+    color: #ffffff; /* hover 시 텍스트 색상 */
+    transform: translateY(-2px); /* hover 시 살짝 떠오르게 */
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3); /* hover 시 그림자 증가 */
+}
+
+.file-tab.active {
+    background-color: #00481d;
+    color: #ffffff;
+    border-color: #00481d; /* 선택된 탭의 테두리 색상 */
+}
+
+/* 헤더 스타일 */
+.header {
+    width: 100%;
+    height: 190px;
+    background-color: #e6e6e65e; /* 회색 배경 */
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 로고와 네비게이션 간 공간 확보 */
+    padding: 10px 20px; /* 헤더의 내부 여백 */
+    z-index: 1000;
+}
+
+
+/* 모든 video 태그에 적용 */
+video {
+    border: none;
+}
+
+/* 특정 클래스에만 적용 */
+.logo-movie-white {
+    border: none;
+    max-width: 100%;
+    outline: none;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    object-fit: cover;
+}
+
+.logo-movie-container {
+    display: flow;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-movie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+    position: absolute; /* logo-container를 기준으로 배치 */
+    top: 50%; /* 세로 방향 중앙 정렬 */
+    left: 50%; /* 가로 방향 중앙 정렬 */
+    transform: translate(-50%, -50%); /* 완전히 중앙 정렬 */
+    width: 350px; /* 너비 설정 (HTML inline style 제거 가능) */
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 10px 20px;
+    margin: 0;
+    text-align: center;
+}
+
+.nav-links li {
+    margin: 5px 0;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    padding: 5px 10px;
+    display: block;
+    transition: background-color 0.3s ease;
+    font-weight:bold;
+}
+
+.nav-links a:hover {
+    color: #711818; /* 텍스트 색상 */
+    border-radius: 100px;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.github-logo {
+    width: 8%;
+    margin-left: 3%;
+}
+
+.github-logo:hover {
+    transform: translateY(4px);
+    transition: 0.2s;
+
+}
+
+.naver-logo {
+    width: 8%;
+    margin-left: 3%;
+}
+
+.naver-logo:hover {
+    transform: translateY(4px);
+    transition: 0.2s;
+}
+
+.email-logo {
+    width: 6%;
+    margin-left: 3%;
+}
+
+.email-logo:hover {
+    transform: translateY(4px);
+    transition: 0.2s;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.spinner-icon {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #000;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
