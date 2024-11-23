@@ -5,7 +5,13 @@
 <meta name="csrf-token" content="{{ csrf_token }}">
 {% endblock %}
 
-{% block title %}Mini-Talk{% endblock %}
+{% block title %}ALICEchat{% endblock %}
+{% block try-content %}{% endblock %}
+{% block animation_elements %}{% endblock %}
+{% block footer-section %}{% endblock %}
+{% block logo-movie %}{% endblock %}
+{% block about-content %}{% endblock %}
+
 
 {% block input_container %}
 <div class="message-container" style="margin-top: 50vh;">
@@ -15,7 +21,10 @@
         </div>
     {% endif %}
 </div>
+{{ block.super }}
+{% endblock %}
 
+{% block analysis-result %}
 <div id="loading-spinner" class="spinner" style="display: none;">
     <div class="spinner-icon"></div>
 </div>
@@ -26,55 +35,4 @@
         <p>확률: <strong>{{ result.probabilities }}</strong></p>
     {% endif %}
 </div>
-
-<div>
-    <textarea id="textBox" placeholder="Enter your message here"></textarea>
-    <button id="sendButton">Analyze</button>
-</div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        const sendButton = document.getElementById("sendButton");
-        const textBox = document.getElementById("textBox");
-        const spinner = document.getElementById("loading-spinner");
-        const resultDiv = document.getElementById("analysis-result");
-
-        const sendMessage = () => {
-            const message = textBox.value.trim();
-            if (!message) {
-                alert("Please enter a message.");
-                return;
-            }
-
-            spinner.style.display = "block"; // 로딩 애니메이션 표시
-
-            fetch('/chatbot/analyze_message/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrfToken
-                },
-                body: JSON.stringify({ message })
-            })
-                .then(response => {
-                    if (response.redirected) {
-                        window.location.href = response.url; // 리다이렉션 처리
-                    }
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    spinner.style.display = "none";
-                });
-        };
-
-        sendButton.addEventListener('click', sendMessage);
-        textBox.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter' && !event.shiftKey) {
-                event.preventDefault();
-                sendMessage();
-            }
-        });
-    });
-</script>
 {% endblock %}

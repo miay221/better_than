@@ -170,12 +170,7 @@
                         .then(data => {
                             spinner.style.display = "none"; // 로딩 애니메이션 숨기기
                             if (data.status === 'success') {
-                                const { result } = data;
-                                // 분석 결과를 화면에 표시
-                                resultDiv.innerHTML = `
-                                    <p>Predicted Class: <strong>${result.predicted_class}</strong></p>
-                                    <p>Probabilities: <strong>${JSON.stringify(result.probabilities)}</strong></p>
-                                `;
+                                window.location.href = data.redirect_url;
                             } else {
                                 alert(data.message);
                             }

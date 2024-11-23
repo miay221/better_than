@@ -23,7 +23,7 @@ def analyze_message(request):
             # 결과를 세션에 저장 (동기 방식)
             request.session['analysis_result'] = result
 
-            # 분석 결과와 함께 응답 반환
+            # 분석 결과, 응답 반환
             return JsonResponse({
                 'status': 'success',
                 'result': result,
