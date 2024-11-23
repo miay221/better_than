@@ -278,14 +278,27 @@
 <footer style="height: 75vh; width: 100%; background-color: #f1f1f1;">
     <!-- Contact section -->
     <section id="contact" class="section footer-section">
+
         <div class="contact-content">
             <h2 style="text-align: center; color: black; font-size: 40px; font-weight: bold; margin-top: 3%;">CONTACT</h2>
+            <div class="feedback" style="display: flex; align-items: center; justify-content: center;">
+                <textarea id="feedbackBox" class="feedbackBox" placeholder="Please send your feedback me"></textarea>
+                    <button type="button" class="text-button" id="sendButton">
+                        <img src="{% static 'images/arrow_top.png' %}" style="width: 5%; min-width: 28px;">
+                    </button>
+            </div>
+            
             <div class="logo-links" style="margin-top: 4%; text-align: center;">
                 <a href="https://github.com/miay221/better_than_now"><img class="github-logo" src="{% static 'images/github_logo.png' %}" alt="github-logo"></a>
                 <a href="https://blog.naver.com/about_myself_/223632909091"><img class="naver-logo" src="{% static 'images/naver_logo.png' %}" alt="naver-logo"></a>
                 <img class="email-logo" src="{% static 'images/email_logo.png' %}" alt="email-logo">
             </div>
+
+            <div class="copyRight" style="margin-top: 19vh; text-align: center;">
+                <p style="font-size: 11px; font-family: system-ui; font-weight: bold;">ⓒ 2024. Minjeong Kim All Rights Reserved.</p>
+            </div>
         </div> 
+
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
     <script src="{% static 'js/animation.js' %}"></script>

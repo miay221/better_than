@@ -162,6 +162,28 @@ main {
     outline: none;
 }
 
+.feedbackBox {
+    resize: none; /* 사용자가 직접 크기 조절 못하도록 설정 */
+    overflow-y: auto; /* 스크롤바 보이기 */
+    height: 53px;
+    width: 100%;
+    max-height: 120px;
+    min-width: 355px;
+    /* max-width: 700px; */
+    /* padding-left: 30px; */
+    /* padding-top: 10px; */
+    padding: 13px 40px;
+    border: none; /* 사용자가 입력해도 border 생기지 않도록 설정 */
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+    font-family: system-ui;
+    outline: none;
+    margin-left: 31%;
+    min-height: 200px;
+}
+
+
 
 /* 스크롤바 스타일 */
 .textBox::-webkit-scrollbar {
