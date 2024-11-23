@@ -123,10 +123,6 @@
             {% endblock %}
 
             {% block analysis-result %}
-            <div id="loading-spinner" style="display: none;">
-                <div class="spinner-icon"></div>
-            </div>
-            
             <div id="analysis-result" class="analysis-result">
                 <!-- 챗봇 index.html에서 보여질 부분 -->
             </div>
@@ -137,6 +133,9 @@
                 <textarea id="textBox" class="textBox" placeholder="Write your message"></textarea>
                 <button type="button" class="text-button" id="sendButton">
                     <img src="{% static 'images/arrow_top.png' %}" style="width: 7%; min-width: 28px;">
+                    <div id="loading-spinner" class="spinner" style="display: none;">
+                        <div class="spinner-icon"></div>
+                    </div>
                 </button>
             </div>
         </section>
