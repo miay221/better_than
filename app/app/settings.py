@@ -113,7 +113,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    BASE_DIR / "images",  # images 디렉토리 추가
 ]
 
 # Default primary key field type

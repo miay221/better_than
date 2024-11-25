@@ -5,6 +5,7 @@ import json
 from .final_model import predict_emotion_async, generate_lime_explanation
 import random
 
+
 def random_num(end):
     return random.randint(1, end)
 
@@ -95,3 +96,4 @@ def index(request):
         'clover_cnt':clover_cnt,
         'card_texts':card_texts,
     })
+
