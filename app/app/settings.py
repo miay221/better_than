@@ -1,8 +1,6 @@
 from pathlib import Path
 import os
-from decouple import config
 
-SECRET_KEY = config('SECRET_KEY')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
