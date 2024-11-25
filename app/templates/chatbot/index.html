@@ -40,11 +40,23 @@
         {% endif %}
     </div>
     {% if result %}
-        <div class="result-container" style="margin-top: 20px; text-align: center;">
-            <!-- <p>예측 클래스: <strong>{{ result.predicted_class }}</strong></p>
-            <p>확률: <strong>{{ max_val }}</strong></p> -->
-            <p>클래스별 예측: <strong>{{ result.probabilities }}</strong></p>
+        <div style="display: flex; align-items: center; margin-top: 7%; margin-bottom: 4%;">
+            <p style="margin: 0; font-size: 14px; font-style: italic; font-weight: 700;">클래스 예측 확률:</p>
+            <strong style="background-color: #ffffa2bf; font-size: 24px; margin-left: 10px;">{{ max_val }}</strong>
+        </div>
+        <div id="result-container" class="result-container" style="margin-top: 20px; text-align: center; width: 100%; padding-left: 45%;">
+            <!-- <p>예측 클래스: <strong>{{ result.predicted_class }}</strong></p> -->
+            <!-- <p> <strong>{{ result.probabilities }}</strong></p> -->
+            {% if lime_explainer %}
+                <div class="lime_explainer">
+                    {{ lime_explainer|safe }}
+                </div>
+            {% endif %}
         </div>
     {% endif %}
 </div>
+{% endblock %}
+
+{% block footer-section %}
+{{ block.super }}
 {% endblock %}

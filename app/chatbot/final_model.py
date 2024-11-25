@@ -3,6 +3,7 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from konlpy.tag import Komoran
 import asyncio
+from lime.lime_text import LimeTextExplainer
 
 # Komoran 형태소 분석기 초기화
 komoran = Komoran()
@@ -52,10 +53,25 @@ async def predict_emotion_async(text):
         "probabilities": probabilities.tolist()  # 각 클래스별 확률 반환
     }
 
-# 테스트: 텍스트 예측
-# if __name__ == "__main__":
-#     test_sentence = "아 근데 개짜증나 진짜 왜케 느리냐? 빨리빨리 개선 안하냐고"
-#     result = predict_emotion_async(test_sentence)
-#     print(f"Processed Text: {result['processed_text']}")
-#     print(f"Predicted Class: {result['predicted_class']}")
-#     print(f"Probabilities: {result['probabilities']}")
+
+async def generate_lime_explanation(text):
+    explainer = LimeTextExplainer(class_names=["매우 좋지 않음", "좋지 않음", "보통", "좋음", "매우 좋음"])
+
+    def predict_proba(texts):
+        inputs = tokenizer(texts, return_tensors="pt", truncation=True, padding=True, max_length=150)
+        with torch.no_grad():
+            logits = model(**inputs).logits
+            proba = torch.softmax(logits, dim=-1).cpu().numpy()
+        return proba
+    
+    processed_text = preprocess_text(text)
+
+    explanation = await asyncio.to_thread(
+        explainer.explain_instance,
+        processed_text,
+        predict_proba,
+        num_features=8
+    )
+
+    lime_html = explanation.as_html()
+    return lime_html
