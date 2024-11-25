@@ -183,6 +183,53 @@ main {
     min-height: 200px;
 }
 
+#alice_card_content {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden; /* 자식 요소가 부모 컨테이너를 벗어나지 못하도록 설정 */
+}
+
+#card_text {
+    position: absolute; 
+    top: 50%; 
+    left: 44%; 
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center; /* 텍스트 가운데 정렬 */
+    pointer-events: none;
+    color: rgb(255, 255, 255); /* 기본 색상 */
+    word-wrap: break-word; /* 긴 텍스트 줄바꿈 */
+}
+
+#alice_card_content:hover #card_text {
+    color: #000; /* 마우스를 올리면 검정색으로 변경 */
+    transition: color 0.5s ease-in-out;
+}
+
+#alice_card_content:hover #card_img {
+    opacity: 0.4;
+}
+
+
+.clover-wrapper {
+    display: flex;
+    align-items: center; /* 수직 정렬 */
+    justify-content: center; /* 가로 정렬 */
+    margin-bottom: 10px; /* 카드와 간격 추가 */
+}
+
+.clover-cnt {
+    margin-right: 10px; /* 클래스 설명과 클로버 이미지 간의 간격 */
+    font-size: 13px;
+    /* font-weight: bold; */
+}
+
+.clover-container img {
+    width: 27px;
+    margin-left: 5px;
+}
 
 
 /* 스크롤바 스타일 */

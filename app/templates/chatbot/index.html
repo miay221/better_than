@@ -29,24 +29,34 @@
 </div>
 
 <div id="analysis-result" class="analysis-result" style="display: flex; flex-direction: column; align-items: center; margin-top: 5%;">
-    <div class="top-container" style="display:flex; align-items: center;">
-        <img src="{% static 'images/Alice_card.png' %}" class="alice_card_img" style="width: 24%; margin-right: 18px; margin-left: 26%;">
-        {% if result %}
-            <div class="clover-container" style="display: flex;">
-                {% for _ in range %}
-                    <img src="{% static 'images/clover.png' %}" class="clover-img" style="width: 27px; margin-left: 5px;">
-                {% endfor %}
+    <div class="card-container" style="position: relative; width: 24%; margin: 0 auto;">
+        <div class="clover-wrapper" style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+            <div class="clover-cnt">
+                <p style="background-color: #ffffcacf; word-wrap: break-word">예측된 클래스</p>
             </div>
-        {% endif %}
+            {% if result %}
+                <div class="clover-container" style="display: flex;">
+                    {% for _ in range %}
+                        <img src="{% static 'images/clover.png' %}" class="clover-img" style="width: 27px; margin-left: 5px;">
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div id="alice_card_content" class="alice_card_content">
+            <div id="card_text" class="card-text">
+            "{{ card_texts }}"
+            </div>
+            <img src="{% static 'images/Alice_card.png' %}" id="card_img" class="alice_card_img" style="width: 100%;">
+        </div>
     </div>
     {% if result %}
+        <p style="font-size: 12px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Click Alice card ▲</p>
         <div style="display: flex; align-items: center; margin-top: 7%; margin-bottom: 4%;">
             <p style="margin: 0; font-size: 14px; font-style: italic; font-weight: 700;">클래스 예측 확률:</p>
             <strong style="background-color: #ffffa2bf; font-size: 24px; margin-left: 10px;">{{ max_val }}</strong>
         </div>
         <div id="result-container" class="result-container" style="margin-top: 20px; text-align: center; width: 100%; padding-left: 45%;">
-            <!-- <p>예측 클래스: <strong>{{ result.predicted_class }}</strong></p> -->
-            <!-- <p> <strong>{{ result.probabilities }}</strong></p> -->
             {% if lime_explainer %}
                 <div class="lime_explainer">
                     {{ lime_explainer|safe }}
@@ -55,6 +65,7 @@
         </div>
     {% endif %}
 </div>
+
 {% endblock %}
 
 {% block footer-section %}
