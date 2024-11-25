@@ -410,7 +410,7 @@ video {
 .github-logo {
     width: 8%;
     margin-left: 3%;
-    min-width: 50px;
+    min-width: 108px;
 }
 
 .github-logo:hover {
@@ -422,7 +422,7 @@ video {
 .naver-logo {
     width: 8%;
     margin-left: 3%;
-    min-width: 50px;
+    min-width: 108px;
 }
 
 .naver-logo:hover {
@@ -433,7 +433,7 @@ video {
 .email-logo {
     width: 6%;
     margin-left: 3%;
-    min-width: 50px;
+    min-width: 83px;
 }
 
 .email-logo:hover {
@@ -483,3 +483,43 @@ video {
         width: 100%; /* 메시지 컨테이너 크기 조정 */
     }
 }
+
+/* tooltip */
+.tooltip {
+    position: relative;
+    display: block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 50%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    padding: 5px;
+    top: -75%;
+    left: 12%;
+    font-size: 12px;
+
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+.tooltip .tooltiptext::after {
+    content: " ";             /* 정사각형 영역 사용 */
+    position: absolute;       /* 절대 위치 사용 */
+    border-style: solid;
+    border-width: 5px;        /* 테두리 넓이를 5px 로 설정 */
+    top: 100%;
+    left: 50%;
+    color: black;
+    transform: translateX(-50%) rotate(90deg); /* X축 중앙 정렬 및 90도 회전 */
+    /* 사각형의 테두리에서 왼쪽만 노출 */
+    border-color: transparent transparent transparent black;
+  }
