@@ -410,6 +410,7 @@ video {
 .github-logo {
     width: 8%;
     margin-left: 3%;
+    min-width: 50px;
 }
 
 .github-logo:hover {
@@ -421,6 +422,7 @@ video {
 .naver-logo {
     width: 8%;
     margin-left: 3%;
+    min-width: 50px;
 }
 
 .naver-logo:hover {
@@ -431,6 +433,7 @@ video {
 .email-logo {
     width: 6%;
     margin-left: 3%;
+    min-width: 50px;
 }
 
 .email-logo:hover {

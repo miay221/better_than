@@ -297,6 +297,18 @@
                     });
                 });
             });
+
+            function copyToClipboard(element) {
+                const email = element.getAttribute("data-email");
+                navigator.clipboard.writeText(email)
+                    .then(() => {
+                        alert(`E-mail copied to Clipboard!`);
+                    })
+                    .catch((error) => {
+                        console.error("Failed to copy E-mail:", error);
+                        alert("Failed to copy E-mail. Please try again.");
+                    });
+            }
         </script>
         
         {% endblock %}
@@ -321,7 +333,8 @@
             <div class="logo-links" style="margin-top: 4%; text-align: center;">
                 <a href="https://github.com/miay221/better_than_now"><img class="github-logo" src="{% static 'images/github_logo.png' %}" alt="github-logo"></a>
                 <a href="https://blog.naver.com/about_myself_/223632909091"><img class="naver-logo" src="{% static 'images/naver_logo.png' %}" alt="naver-logo"></a>
-                <img class="email-logo" src="{% static 'images/email_logo.png' %}" alt="email-logo">
+                <img class="email-logo" src="{% static 'images/email_logo.png' %}" alt="email-logo"
+                    data-email="miniland1100@naver.com" onclick="copyToClipboard(this)">
             </div>
 
             <div class="copyRight" style="margin-top: 19vh; text-align: center;">
