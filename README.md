@@ -9,7 +9,7 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 
 <img src="https://github.com/miay221/better_than_now/blob/main/logo_front_black.png" alt="Project Logo" width="100">
 
-<h3> 🗃️ 프로젝트 진행상황</h3>
+### 🗃️ 프로젝트 진행상황
 
 0. 프로젝트 개요: [프로젝트 개요](https://blog.naver.com/about_myself_/223632909091)
 1. 모델 학습: [첫 모델 학습](https://blog.naver.com/about_myself_/223647070278)
@@ -27,25 +27,37 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 
 ---
 
-<h3>💻 기술 스택</h3> 
-  - 모델: KcBERT (한국어 감정 분석)
-  - 배포 환경: AWS
-  - 데이터베이스: PostgreSQL (확장 예정)
-  - 백엔드: Python, Django
-  - 모델: [huggingface](https://huggingface.co/) 트랜스포머 아키텍처(kcBERT)
+### 💻 기술 스택
+
+- **모델:**  
+  KcBERT (한국어 감정 분석)  
+
+- **배포 환경:**  
+  AWS  
+
+- **데이터베이스:**  
+  PostgreSQL (확장 예정)  
+
+- **백엔드:**  
+  Python, Django  
+
+- **모델:**  
+  [Huggingface](https://huggingface.co/) 트랜스포머 아키텍처(KcBERT)  
+
 
 ---
 
-<h3>📂 참고 자료</h3>
-- [언어정보 나눔터](https://kli.korean.go.kr/): 한국어 데이터셋 제공
-※ 머신러닝 모델 개방 요청 허가가 완료되지 않아 웹 페이지에 반영되지 않았습니다. <br>
-※ 추가 학습된 모델은 허깅페이스에 업로드
+### 📂 참고 자료
+- **[언어정보 나눔터](https://kli.korean.go.kr/):** 한국어 데이터셋 제공
+
+<sub> 머신러닝 모델 개방 요청 허가가 완료되지 않아 웹 페이지에 반영되지 않았습니다.</sub>
+<sub>⚠️ 추가 학습된 모델은 허깅페이스에 업로드 예정입니다.</sub>
 
 ---
 
-<h3>🌼 로고 레퍼런스</h3> 
+### 🌼 로고 레퍼런스
 - ![로고 이미지](https://i.namu.wiki/i/hEYunNdeW8zyAo5ggxy9YWqNdLyZ9IHZTv6a702vQZqQcNePrq7er-1Ev4sQRUqtKBjweLFvXiYGWIbviwn3OjnrMBnqI9Aa4rXzj-ngflKWFbrnEtQ41WrO0OgaGAeKWOiepH75w9DHLdPtejhALQ.webp)
-<sub> "넌 너만의 지도를 만들어야 해" </sub>
+- "넌 너만의 지도를 만들어야 해" 우리 모두는 이상한 나라의 앨리스처럼 예상치 못한 누군가를 만나기도 하고, 혼란스러운 상황을 직면하며 자신의 길을 만들어간다는 생각으로 '이상한 나라의 앨리스' 동화를 모티프로 삼았습니다. 
 
 
 
