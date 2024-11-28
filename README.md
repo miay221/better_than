@@ -4,8 +4,8 @@
 Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 데이터베이스는 PostgreSQL을 사용하고, Django로 백엔드를 구축하여 전체 웹 서비스를 확장할 수 있도록 준비 중입니다.<br>
 
-[AWS 페이지 링크](http://43.203.3.154/)
- 링크를 클릭하시면 이동합니다.
+[AWS 페이지 링크](http://43.203.3.154/) <br>
+<p style="font-size:10px;"> ^ 링크를 클릭하시면 이동합니다.
 
 <img src="https://github.com/miay221/better_than_now/blob/main/logo_front_black.png" alt="Project Logo" width="100">
 
@@ -42,7 +42,7 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 
 <h3>🌼 로고 레퍼런스</h3> 
 - ![로고 이미지](https://i.namu.wiki/i/hEYunNdeW8zyAo5ggxy9YWqNdLyZ9IHZTv6a702vQZqQcNePrq7er-1Ev4sQRUqtKBjweLFvXiYGWIbviwn3OjnrMBnqI9Aa4rXzj-ngflKWFbrnEtQ41WrO0OgaGAeKWOiepH75w9DHLdPtejhALQ.webp)
-<p style="font-style:italic">"넌 너만의 지도를 만들어야 해"</p>
+<p style="font-style:italic;"> "넌 너만의 지도를 만들어야 해" </p>
 
 
 
