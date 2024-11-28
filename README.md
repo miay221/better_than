@@ -56,7 +56,7 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 ---
 
 ### 🌼 로고 레퍼런스
-- ![로고 이미지](https://i.namu.wiki/i/hEYunNdeW8zyAo5ggxy9YWqNdLyZ9IHZTv6a702vQZqQcNePrq7er-1Ev4sQRUqtKBjweLFvXiYGWIbviwn3OjnrMBnqI9Aa4rXzj-ngflKWFbrnEtQ41WrO0OgaGAeKWOiepH75w9DHLdPtejhALQ.webp)
+![로고 이미지](https://i.namu.wiki/i/hEYunNdeW8zyAo5ggxy9YWqNdLyZ9IHZTv6a702vQZqQcNePrq7er-1Ev4sQRUqtKBjweLFvXiYGWIbviwn3OjnrMBnqI9Aa4rXzj-ngflKWFbrnEtQ41WrO0OgaGAeKWOiepH75w9DHLdPtejhALQ.webp)
 - "넌 너만의 지도를 만들어야 해" 우리 모두는 이상한 나라의 앨리스처럼 예상치 못한 누군가를 만나기도 하고, 혼란스러운 상황을 직면하며 자신의 길을 만들어간다는 생각으로 '이상한 나라의 앨리스' 동화를 모티프로 삼았습니다. 
 
 
