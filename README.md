@@ -4,7 +4,7 @@
 Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 데이터베이스는 PostgreSQL을 사용하고, Django로 백엔드를 구축하여 전체 웹 서비스를 확장할 수 있도록 준비 중입니다.<br>
 
-<img src="https://github.com/miay221/better_than_now/blob/main/logo_front_black.png" alt="Project Logo" width="100">
+<img src="https://github.com/miay221/better_than_now/blob/main/logo_front_black.png" alt="Project Logo" width="100"><a href="http://43.203.3.154/">
 
 ## 프로젝트 진행상황
 
@@ -22,8 +22,8 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 
 ### 기술 스택
 - **모델**: KcBERT (한국어 감정 분석)
-- **배포 환경**: GCP
-- **데이터베이스**: PostgreSQL (예정)
+- **배포 환경**: AWS
+- **데이터베이스**: PostgreSQL (확장 예정)
 - **백엔드**: Python, Django
 
 ---
