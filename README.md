@@ -28,11 +28,11 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 ---
 
 <h3>💻 기술 스택</h3> 
-- **모델**: KcBERT (한국어 감정 분석)
-- **배포 환경**: AWS
-- **데이터베이스**: PostgreSQL (확장 예정)
-- **백엔드**: Python, Django
-- **모델**: [huggingface](https://huggingface.co/) 트랜스포머 아키텍처(kcBERT)
+- 모델: KcBERT (한국어 감정 분석)
+- 배포 환경: AWS
+- 데이터베이스: PostgreSQL (확장 예정)
+- 백엔드: Python, Django
+- 모델: [huggingface](https://huggingface.co/) 트랜스포머 아키텍처(kcBERT)
 
 ---
 
