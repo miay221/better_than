@@ -3,7 +3,7 @@
 이 프로젝트는 KcBERT 모델을 추가 학습하여 한국어 감정 분석 서비스를 만드는 것을 목표로 합니다.<br>
 
 
-[AWS 페이지 링크](http://43.203.3.154/) <br>
+🔗[AWS 페이지 링크](http://43.203.3.154/) <br>
 <sub>^ 링크를 클릭하시면 이동합니다.</sub>
 
 <img src="https://github.com/miay221/better_than_now/blob/main/logo_front_black.png" alt="Project Logo" width="100">
