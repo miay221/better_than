@@ -22,6 +22,9 @@ Docker로 배포 환경을 설정하고, GCP에 배포할 예정입니다.<br>
 8. 페이지 섹션 제작: [전체 페이지 섹션별 구현하여 연동](https://blog.naver.com/about_myself_/223669763330)
 9. 최종 페이지: [시연 영상 및 후기](https://blog.naver.com/about_myself_/223673868429)
 
+
+<sub>^ 원하는 곳을 클릭하시면 해당 페이지로 이동합니다. </sub>
+
 ---
 
 <h3>💻 기술 스택</h3> 
